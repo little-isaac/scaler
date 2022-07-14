@@ -83,11 +83,11 @@ class Solution:
 
 
 
-solu = Solution()
+(solu = Solution()
 array = [
     [-7, 1, 5, 2, -4, 3, 0], # 3
     [1,2,3]  # -1
 ]
 for A in array:
     ans = solu.solve(A)
-    print("output for ",A," is ",ans)
+    print("output for ",A," is ",ans))
