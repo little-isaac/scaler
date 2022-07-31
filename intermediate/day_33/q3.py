@@ -1,4 +1,4 @@
-strInout = "2 4 2\n1 2 3\n1 3 4"
+# strInout = "2 4 2\n1 2 3\n1 3 4"
 # strInout = "2 3 4\n1 2 3\n3 1 2 2 2\n2 1 2\n4 1 2 2 3"
 # strInout = "8 9 20\n2 5 6\n1 6 5\n3 1 5 4 6\n2 8 6\n2 2 2\n3 4 4 2 8\n1 9 4\n2 7 4\n1 2 2\n3 2 8 3 6\n3 1 5 7 4\n2 5 3\n3 6 6 5 5\n4 8 3 2 8\n3 5 3 5 4\n2 1 5\n4 2 9 2 9\n1 4 2\n3 6 1 3 1\n3 8 7 3 2"
 
@@ -31,9 +31,9 @@ def main():
     # YOUR CODE GOES HERE
     # Please take input and print output to standard input/output (stdin/stdout)
     # E.g. 'input()/raw_input()' for input & 'print' for output
-    inputVar = strInout.split("\n")
-    firstIn = inputVar[0].strip().split(" ")
-    # firstIn = input().strip().split(" ")
+    # inputVar = strInout.split("\n")
+    # firstIn = inputVar[0].strip().split(" ")
+    firstIn = input().strip().split(" ")
     N = int(firstIn[0])
     M = int(firstIn[1])
     Q = int(firstIn[2])
@@ -58,8 +58,8 @@ def main():
     #     mat.append(temp)
     # printMat(mat)
     for q in range(1,Q+1):
-        secIn = inputVar[q].strip().split(" ")
-        # secIn = input().strip().split(" ")
+        # secIn = inputVar[q].strip().split(" ")
+        secIn = input().strip().split(" ")
         a = int(secIn[0])
         if a == 1:
             c1 = int(secIn[1]) -1
@@ -90,7 +90,7 @@ def main():
                 y1 = cSwap[y1]
             if cSwap[y2] != -1:
                 y2 = cSwap[y2]
-            # print(getNumber(x1,y1,M) | getNumber(x2,y2,M))
+            print(getNumber(x1,y1,M) | getNumber(x2,y2,M))
             # print(mat[x1][y1] | mat[x2][y2])
             # printMat(mat)
         elif a == 4:
@@ -106,7 +106,7 @@ def main():
                 y1 = cSwap[y1]
             if cSwap[y2] != -1:
                 y2 = cSwap[y2]
-            # print(getNumber(x1,y1,M) & getNumber(x2,y2,M))
+            print(getNumber(x1,y1,M) & getNumber(x2,y2,M))
             # print(mat[x1][y1] & mat[x2][y2])
             # printMat(mat)
     # print("col",cSwap)
