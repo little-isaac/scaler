@@ -40,19 +40,49 @@ Explanation 2:
 The subarrays are :- [1], [0], [1, 0]
 Except the subarray [0] all the other subarrays has a Bitwise OR = 1
 """
+
 class Solution:
     # @param A : integer
     # @param B : list of integers
      # @return an long
-    def solve(self, A, B):
-        n = A
+    def appTwo(self,A,B):
+        last = 0
         ans = 0
-        for i in range(n):
-            bitOr = B[i]
-            for j in range(i,n):
-                bitOr = bitOr | B[j]
-                if bitOr == 1:
-                    ans += 1
+        for i in range(A):
+            if B[i] == 1:
+                last = i+1
+            ans += last
+            print(i,B[i],last,ans)
+        return ans
+    def solve(self, A, B):
+        return self.appTwo(A,B)
+    def appOne(self,A,B):
+        n = A
+        if n == 1 and B[0] == 0:
+            return 0
+        ans = 0
+        consucutiveZero = 0
+        totalSubArray = int((n * (n+1)) / 2)
+        isLast0 = False
+        totalZeroArrayLength = 0
+        ans = totalSubArray - totalZeroArrayLength
+        if B[0] == 0:
+            isLast0 = True
+            consucutiveZero += 1
+        for i in range(1,n):
+            if B[i] == 0:
+                consucutiveZero += 1
+                isLast0 = True
+                if i == n-1:
+                    totalZeroArrayLength = int((consucutiveZero * (consucutiveZero + 1)) / 2)
+                    ans = ans - totalZeroArrayLength
+            else:
+                if isLast0 or i == n-1:
+                    totalZeroArrayLength = int((consucutiveZero * (consucutiveZero + 1)) / 2)
+                    ans = ans - totalZeroArrayLength
+                consucutiveZero = 0
+                totalZeroArrayLength = 0
+                isLast0 = False
         return ans
 
 
@@ -63,6 +93,9 @@ array = [
     [3,[1, 0, 1]] , # 5
     [2, [1, 0]] , # 2
     [5, [ 0, 1, 1, 0, 1 ]] , # 13
+    [5, [ 0, 1, 0, 0, 0 ]], # 8
+    [9, [ 1, 0, 0, 1, 1, 1, 1, 1, 1 ]], # 42
+    [443,[ 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1 ]] # 97766
 ]
 for A in array:
     ans = solu.solve(A[0],A[1])
