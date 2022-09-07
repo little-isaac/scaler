@@ -36,51 +36,43 @@ class Solution:
     # @param A : tuple of integers
     # @return an integer
     def repeatedNumber(self, A):
-        n = len(A)
-        ele1 = A[0]
-        fre1 = 1
-
-        ele2 = -1
-        fre2 = 0
-        for i in range(1,n):
-            if ele1 == -1:
-                ele1 = A[i]
-                fre1 = 1
-            elif A[i] == ele1:
-                fre1 += 1
+        N = len(A)
+        if N == 1:
+            return A[0]
+        N3 = len(A) // 3
+        me1 = A[0]
+        me2 = A[1]
+        c1 = 0
+        c2 = 0
+        for i in A:
+            if i == me1:
+                c1 += 1
+            elif i == me2:
+                c2 += 1
             else:
-                fre1 -= 1
-
-            if fre1 == 0:
-                ele1 = -1
-
-
-            if ele2 == -1:
-                ele2 = A[i]
-                fre2 = 1
-            elif A[i] == ele2:
-                fre2 += 1
-            else:
-                fre2 -= 1
-
-            if fre2 == 0:
-                ele2 = -1
-        fre1 = 0
-        fre2 = 0
-        if ele1 != -1:
-            for i in range(n):
-                if ele1 == A[i]:
-                    fre1 += 1
-        if ele2 != -1:
-            for i in range(n):
-                if ele2 == A[i]:
-                    fre2 += 1
-        if fre1 >= n//3:
-            return ele1
-        if fre2 >= n//3:
-            return ele2
-        return -1
-
+                if c1 == 0:
+                    me1 = i
+                    c1 = 1
+                elif c2 == 0:
+                    me2 = i
+                    c2 = 1
+                else:
+                    c1 -= 1
+                    c2 -= 1
+        fe1 = 0
+        fe2 = 0
+        for j in A:
+            if j == me1:
+                fe1 += 1
+            if j == me2:
+                fe2 += 1
+        res = []
+        if fe1 > N3:
+            return me1
+        elif fe2 > N3:
+            return me2
+        else:
+            return -1
 
 solu = Solution()
 array = [
