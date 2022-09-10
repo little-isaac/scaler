@@ -30,7 +30,7 @@ class Solution:
             rightMax = sfm[i+1]
             level = min(leftMax,rightMax)
             # if the m is small then A[i] then it means we cannot store water
-            print(i,A[i],level,level-A[i])
+            # print(i,A[i],level,level-A[i])
             diff = level-A[i]
             if diff > 0:
                 ans += diff
@@ -38,9 +38,9 @@ class Solution:
 
 solu = Solution()
 array = [
-    [[2,1,3,2,1,2,4,3,2,1]], # 5
-    # [[10,7,3,5,2,3,6,9,8,11]], # 37
-    # [[4,2,5,7,4,2,3,6,8,2,3]], # 16
+    [[2,1,3,2,1,2,4,3,2,1,3,1]], # 8
+    [[10,7,3,5,2,3,6,9,8,11]], # 37
+    [[4,2,5,7,4,2,3,6,8,2,3]], # 16
     ]
 for A in array:
     ans = solu.solve(A[0])
