@@ -20,6 +20,8 @@ class Solution:
                     ans.append(B)
                     isNewAdded = True
                 ans.append(A[i])
+        if isNewAdded is False:
+            ans.append(B)
         return ans
 solu = Solution()
 array = [
@@ -28,7 +30,13 @@ array = [
             [1,3],[4,7],[10,14],[16,19],[21,24],[27,30],[32,35],[38,41],[43,50]
         ],
         [12,22]
-        ] , #
+        ] , 
+        [
+            [
+                [1,5],[8,10],[11,14],[15,20],[21,24]
+            ],
+            [12,22]
+        ]
 ]
 for A in array:
     ans = solu.solve(A[0],A[1])
