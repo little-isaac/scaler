@@ -1,4 +1,8 @@
+"""
+find missing natural elements
 
+natural numbers are 1, 2, 3, 4, ...
+"""
 class Solution:
 
     def solve(self, A):
