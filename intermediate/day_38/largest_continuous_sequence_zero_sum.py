@@ -58,12 +58,12 @@ class Solution:
         for i in range(n):
             if pf[i] == 0:
                 tLen = i
-                if tLen > maxLen or maxLen == -1:
+                if tLen-1 > maxLen or maxLen == -1:
                     maxLen = tLen
                     end = i
                     start = -1
             if pf[i] in hashA:
-                tLen = i - hashA[pf[i]]
+                tLen = i - hashA[pf[i]] - 1
                 if tLen > maxLen or maxLen == -1:
                     maxLen = tLen
                     end = i
@@ -76,9 +76,11 @@ class Solution:
 
 solu = Solution()
 array = [
-    [[1,2,-2,4,-4]] , # [2,-2,4,-4]
-    [[1,1,-2,1,-1]] , # [2,-2,4,-4]
-    [[2,2,1,-3,4,3,1,-2,-3,2]] , # [2,-2,4,-4]
+    # [[1,2,-2,4,-4]] , # [2,-2,4,-4]
+    # [[1,1,-2,1,-1]] , # [2,-2,4,-4]
+    # [[2,2,1,-3,4,3,1,-2,-3,2]] , # [2,-2,4,-4]
+    # [[ -8, 8, -1, -16, -28, -27, 15, -14, 14, -27, -5, -6, -25, -11, 28, 29, -3, -25, 17, -25, 4, -20, 2, 1, -17, -10, -25 ]], #-8 8 
+    [[ -14, -10, -1, 2, 12, -19, 27, -20, 0, 11 ]], #-8 8 
 ]
 for A in array:
     ans = solu.lszero(A[0])
