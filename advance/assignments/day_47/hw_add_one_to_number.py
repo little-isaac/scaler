@@ -54,21 +54,32 @@ class Solution:
         ans = []
         c = 1
         for i in range(n-1,-1,-1):
-            if A[i] != 0 or i == n-1:
-                a = A[i] + c
-                if a < 10:
-                    ans.append(a)
-                    c = 0
-                    continue
+            a = A[i] + c
+            if a < 10:
+                ans.append(a)
+                c = 0
+                continue
+            else:
                 ans.append(a % 10)
-                ans.append(a//10)
-        return ans[::-1]
+                c = a // 10
+        if c > 0:
+            ans.append(c)
+        ans = ans[::-1]
+        i = 0
+        while ans[i] == 0:
+            del ans[i]
+        return ans
 
 solu = Solution()
 array = [
     [[1, 2, 3]], # [1, 2, 4]
     [[0]], # [1]
     [[0,0]], # [1]
+    [[0 ,0 ,0]], # [1]
+    [[ 9, 9, 9, 9, 9 ]], # [1, 0, 0, 0, 0, 0]
+    [[ 3, 0, 6, 4, 0 ]], # [3, 0, 6, 4, 1]
+    [[ 0, 3, 7, 6, 4, 0, 5, 5, 5 ]],
+    [[ 0, 6, 0, 6, 4, 8, 8, 1 ]]
     ]
 for A in array:
     ans = solu.plusOne(A[0])
