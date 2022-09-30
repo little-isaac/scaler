@@ -49,11 +49,22 @@ Explanation 2:
 Reorder the numbers to [9, 3, 2, 0] to form the largest number 9320.
 """
 
-
+from functools import cmp_to_key
 class Solution:
     # @param A : tuple of integers
     # @return a strings
     def largestNumber(self, A):
+        A = list(map(str,A))
+        def compare(num1,num2):
+            if num1 + num2 > num2 + num1:
+                return -1
+            else:
+                return 1
+        A = sorted(A,key=cmp_to_key(compare))
+        if A[0] =='0':
+            return 0
+        return "".join(A)
+    def largestNumberPrev(self, A):
         A = list(A)
         n = len(A)
         for i in range(n):
