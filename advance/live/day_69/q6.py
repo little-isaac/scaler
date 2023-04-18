@@ -12,12 +12,10 @@ from advance.live.day_69.q5 import Solution as merge
 class Solution:
     def mergeSort(self,A,s,e):
         if s == e:
-            print(s,e,A)
             return A
         m = (s+e) // 2
         A = self.mergeSort(A,s,m)
         A = self.mergeSort(A,m+1,e)
-        print(s,m,e)
         mergeClass = merge()
         return mergeClass.solve(A,s,m,e)
     def solve(self,A):

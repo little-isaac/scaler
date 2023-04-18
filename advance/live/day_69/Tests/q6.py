@@ -8,7 +8,7 @@ from advance.live.day_69.q6 import Solution
 
 class Q1Tests(unittest.TestCase):
 
-    inputOutput = [[10,3,7,5,8,4,2,1,3],[1,2,3,4,5,6,7,8,10]]
+    inputOutput = [[10,6,7,5,8,4,2,1,3],[1,2,3,4,5,6,7,8,10]]
 
     def test_normal_array(self):
 
