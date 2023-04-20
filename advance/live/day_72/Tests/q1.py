@@ -10,22 +10,15 @@ class Q1Tests(unittest.TestCase):
 
     inputOutput1 = [[8,3,4],2]
     inputOutput2 = [[10,3,8,15,6,12,2,18,7,1],26]
+    inputOutput3 = [[6, 12, 10, 17, 10, 22, 9, 19, 21, 31, 26, 8 ],21]
 
-    def test_1_array(self):
-
-        objSol = Solution()
-
-        ans = objSol.solve(self.inputOutput1[0])
-
-        self.assertEqual(ans, self.inputOutput1[1])
-
-    def test_2_array(self):
+    def test_3_array(self):
 
         objSol = Solution()
 
-        ans = objSol.solve(self.inputOutput2[0])
+        ans = objSol.solve(self.inputOutput3[0])
 
-        self.assertEqual(ans, self.inputOutput2[1])
+        self.assertEqual(ans, self.inputOutput3[1])
 
 if __name__ == '__main__':
     unittest.main()

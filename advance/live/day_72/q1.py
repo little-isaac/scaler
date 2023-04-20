@@ -7,38 +7,43 @@ class Solution:
     count = 0
     def mergeSort(self,A,i,j):
         if i >= j:
-            return A
+            return
         m = (i+j) // 2
-        A = self.mergeSort(A,i,m)
-        A = self.mergeSort(A,m+1,j)
-        return self.merge(A,i,m,j)
+        self.mergeSort(A,i,m)
+        self.mergeSort(A,m+1,j)
+        self.merge(A,i,m,j)
     def merge(self,A, s1, e1, e2):
-        n1 = e1+1
-        n2 = e2+1
+        n = e1+1
+        m = e2+1
         p1 = s1
         p2 = e1+1
-        C = []
-        for i in range(p1):
-            C.append(A[i])
-        while p1 < n1 and p2 < n2:
+        C = [0] * (e2-s1+1)
+        k = 0
+
+        while p1 < n and p2 < m:
             if A[p1] < A[p2]:
-                C.append(A[p1])
+                C[k] = A[p1]
                 p1 = p1 + 1
+                k = k + 1
             else:
-                self.count = self.count + (n1 - p1)
-                C.append(A[p2])
+                print(A[p1],A[p2])
+                self.count = self.count + (n-p1)
+                C[k] = A[p2]
                 p2 = p2 + 1
-        while p1 < n1:
-            C.append(A[p1])
+                k = k + 1
+        while p1 < n:
+            C[k] = A[p1]
             p1 = p1 + 1
-        while p2 < n2:
-            C.append(A[p2])
+            k = k + 1
+        while p2 < m:
+            C[k] = A[p2]
             p2 = p2 + 1
-        for i in range(e2+1,len(A),1):
-            C.append(A[i])
-        return C
+            k = k + 1
+        for i in range(len(C)):
+            A[i+s1] = C[i]
     def solve(self,A):
         sortedA = self.mergeSort(A,0,len(A)-1)
+        print(A)
         return self.count
 
 # solu = Solution()

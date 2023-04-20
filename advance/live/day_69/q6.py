@@ -11,15 +11,16 @@ from advance.live.day_69.q5 import Solution as merge
 
 class Solution:
     def mergeSort(self,A,s,e):
-        if s == e:
-            return A
+        if s >= e:
+            return
         m = (s+e) // 2
-        A = self.mergeSort(A,s,m)
-        A = self.mergeSort(A,m+1,e)
+        self.mergeSort(A,s,m)
+        self.mergeSort(A,m+1,e)
         mergeClass = merge()
-        return mergeClass.solve(A,s,m,e)
+        mergeClass.solve(A,s,m,e)
     def solve(self,A):
-        return self.mergeSort(A,0,len(A)-1)
+        self.mergeSort(A,0,len(A)-1)
+        return A
 
 # solu = Solution()
 # array = [
