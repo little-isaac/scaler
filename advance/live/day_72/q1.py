@@ -21,7 +21,7 @@ class Solution:
         k = 0
 
         while p1 < n and p2 < m:
-            if A[p1] < A[p2]:
+            if A[p1] <= A[p2]:
                 C[k] = A[p1]
                 p1 = p1 + 1
                 k = k + 1
